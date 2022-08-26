@@ -18,4 +18,15 @@ export default {
 body{
     background-color:#252020; 
 }
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 2px;
+}
+::-webkit-scrollbar-track {
+  background: #252020;   
+}
+::-webkit-scrollbar-thumb {
+  background:#3ec5ffdf;
+}
 </style>
