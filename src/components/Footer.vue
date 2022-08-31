@@ -60,6 +60,7 @@
 
 <style scoped>
  @import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500');
+
 .site-footer
 {
   background-color:#3ec5ffdf;
@@ -69,7 +70,7 @@
   color:#252020;
   font-family: 'Dosis', sans-serif;
   box-shadow: 0vw -2px 10px #3ec5ffdf ;
-  z-index: 5;
+  width:100%
 }
 .site-footer hr
 {

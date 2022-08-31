@@ -27,20 +27,22 @@ img{
  top: 45%;
  font-size: 100px;
  transform: rotate(90deg);
-  text-shadow: 0px 0px 10px;
+text-shadow: 0px 0px 10px;
+font-family: 'Dosis', sans-serif;
 }
 
 #about{
 position: absolute;
  text-decoration: line-through;
- left: 39%;
+ left: 40%;
  top:0%;
  font-size: 100px;
  text-shadow: 0px 0px 10px;
+ font-family: 'Dosis', sans-serif;
 }
 
 main{
-  height: 50.5vw;
+  height: 100vh;
 }
 
 #container{
@@ -57,7 +59,7 @@ main{
 #half{
   height: 650px;
   background: #3ec5ffdf;
-  width:425px;
+  width:325px;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   box-shadow: 2px 0vw 10px #3ec5ffdf;

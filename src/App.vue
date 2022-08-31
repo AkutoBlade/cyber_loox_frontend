@@ -15,6 +15,7 @@ export default {
 }
 </script>
 <style>
+ @import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500');
 body{
     background-color:#252020; 
 }
