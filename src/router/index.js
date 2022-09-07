@@ -1,11 +1,19 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import LandingView from '../views/LandingView.vue'
 import HomeView from '../views/HomeView.vue'
 import ContactView from '../views/ContactView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import LoginView from '../views/LoginView.vue'
 import AdminView from '../views/AdminView.vue'
+import SingleView from '../views/SingleView.vue'
+import CartView from '../views/CartView.vue'
 
 const routes = [
+  {
+    path: '/',
+    name: 'Landing',
+    component: LandingView
+  },
   {
     path: '/products',
     name: 'products',
@@ -39,6 +47,24 @@ const routes = [
     name: 'admin',
     component: AdminView
   }, 
+  {
+    path: '/admin',
+    name: 'admin',
+    component: AdminView
+  },   {
+    path: '/product/:id',
+    name: 'single',
+    component: SingleView,
+    props: true
+  }, 
+  {
+    path: '/cart',
+    name: 'cart',
+    component: CartView,
+    props: true
+  }, 
+  
+  
 ]
 
 const router = createRouter({

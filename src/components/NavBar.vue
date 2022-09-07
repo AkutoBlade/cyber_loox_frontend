@@ -44,7 +44,7 @@
               ><i class="fa-solid fa-user"></i>LOGIN</router-link
             >
           </li>
-          <li class="navs-links">
+          <li v-if="user" class="navs-links">
             <router-link to="/cart"
               ><i class="fa-solid fa-cart-shopping"></i> CART</router-link
             >
@@ -103,6 +103,14 @@ button {
   box-shadow: 0px 0px 10px #3ec5ffdf ;
   right: 40px;
   /* transition: transform 80ms ease-in; */
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus {
+  outline: none;
 }
 .slide {
   height: 100%;

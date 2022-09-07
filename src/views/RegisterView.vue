@@ -15,9 +15,13 @@
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
+          <h1>Hello, fellow space cadet!</h1>
           <p>Enter your personal details and start journey with us</p>
-          <button class="ghost" id="signUp" onClick="openSignUp()">Sign Up</button>
+          <router-link to="/users/login">
+          <button class="ghost" id="signUp">
+            Log In
+          </button>
+          </router-link>
         </div>
       </div>
     </div>

@@ -24,11 +24,13 @@
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
+          <h1>Hello, fellow space cadet!</h1>
           <p>Enter your personal details and start journey with us</p>
+          <router-link to="/users/update">
           <button class="ghost" id="signUp">
-            Sign Up
+            Edit Profile
           </button>
+          </router-link>
         </div>
       </div>
     </div>
