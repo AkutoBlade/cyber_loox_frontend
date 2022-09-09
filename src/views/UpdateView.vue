@@ -1,5 +1,5 @@
 <template>
-      <div class="container" id="container">
+        <div class="container" id="container">
     <div class="form-container sign-up-container">
       <form>
         <h1>Create Account</h1>
@@ -8,7 +8,7 @@
         <input type="email" placeholder="Email" name="email" v-model="email" />
         <input type="password" id="signUpEmail" placeholder="Password" name="user_password" v-model="user_password"/>
         <input type="tel" placeholder="Conatct" v-model="phone_number"/>
-        <button type="button" @click="register">Sign Up    <i class="fa-solid fa-paper-plane"></i></button>
+        <button type="button" @click="update">Update    <i class="fa-solid fa-paper-plane"></i></button>
       </form>
     </div>
     
@@ -25,49 +25,26 @@
         </div>
       </div>
     </div>
-  </div>
+        </div>
 </template>
+
 <script>
 export default {
-    data() {
-    return {
-      user_fullname : "",
-      email: "",
-      user_password: "",
-      user_role:"",
-      phone_number: ""
-    };
-  },
  methods:{
-    register(){
-        const payload = {
-           user_fullname: this.user_fullname,
-           email: this.email,
-           user_password: this.user_password,
-           user_role: this.user_role,
-           phone_number : this.phone_number
+      update() {
+            return this.$store.dispatch("updateUser", {
+                user_id: this.user_id,
+                user_fullname: this.user_fullname,
+                email: this.email,
+                user_password: this.user_password,
+                phone_number: this.phone_number
+            });
         }
-    this.$store.dispatch("register",payload)
-    }
- }  
+ }
 }
 </script>
+
 <style scoped>
-
- * {
-  font-family: 'Dosis', sans-serif;
-} 
-
-/* body {
-  background: #f6f5f7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: "Montserrat", sans-serif;
-  height: 100vh;
-  margin: -20px 0 50px;
-} */
 
 h1 {
   font-weight: bold;

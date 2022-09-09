@@ -1,16 +1,16 @@
 <template>
         <div
             class="modal fade"
-            :id="'update'+product.product_id"
+            id="add"
             tabindex="-1"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
           >
-            <div id="update" class="modal-dialog">
+            <div id="add" class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
-                    Edit
+                    Add
                   </h5>
                   <button
                     type="button"
@@ -29,7 +29,8 @@
                         type="text"
                         class="form-control"
                         id="recipient-name"
-                        v-model="product.title"
+                        placeholder="title"
+                        v-model="title"
                       />
                     </div>
                     <div class="mb-3">
@@ -40,7 +41,8 @@
                         type="text"
                         class="form-control"
                         id="recipient-name"
-                        v-model="product.category"
+                        placeholder="category"
+                        v-model="category"
                       />
                     </div>
                     <div class="mb-3">
@@ -51,7 +53,8 @@
                         type="text"
                         class="form-control"
                         id="recipient-name"
-                        v-model="product.product_description"
+                        placeholder="description"
+                        v-model="product_description"
                         
                       />
                     </div>
@@ -63,7 +66,8 @@
                         type="text"
                         class="form-control"
                         id="recipient-name"
-                        v-model="product.img"
+                        placeholder="image"
+                        v-model="img"
                       />
                     </div>
                     <div class="mb-3">
@@ -74,7 +78,8 @@
                         type="text"
                         class="form-control"
                         id="recipient-name"
-                        v-model="product.price"
+                        placeholder="price"
+                        v-model="price"
                         
                       />
                     </div>
@@ -91,8 +96,8 @@
                   </button>
                   <button type="button" 
                   class="btn btn-primary"
-                  @click="add">
-                    Update Product
+                  @click="add" data-bs-dismiss="modal">
+                    ADD
                   </button>
                 </div>
               </div>
@@ -103,15 +108,23 @@
 <script>
 export default {
 props:['product'],
+  data() {
+    return {
+      title:"",
+      category:"",
+      product_description:"",
+      img:"",
+      price:""
+    };
+  }, 
 methods:{
-    update() {
-            return this.$store.dispatch("addProduct", {
-                id: this.product.product_id,
-                title: this.product.title,
-                category: this.product.category,
-                product_description: this.product.product_description,
-                img: this.product.img,
-                price: this.product.price
+    add() {
+           this.$store.dispatch("addProduct", {
+                title: this.title,
+                category: this.category,
+                product_description: this.product_description,
+                img: this.img,
+                price: this.price
             });
         }
 }

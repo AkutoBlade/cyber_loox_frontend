@@ -91,7 +91,7 @@
                   </button>
                   <button type="button" 
                   class="btn btn-primary"
-                  @click="update">
+                  @click="update" data-bs-dismiss="modal">
                     Update Product
                   </button>
                 </div>

@@ -63,7 +63,6 @@ export default createStore({
       });
     },
     async deleteProduct(context, id) {
-      console.log(id);
       fetch("https://cyber-loox.herokuapp.com/products/" + id, {
       // fetch("https://cyber-loox.herokuapp.com/products/" + id, {
           method: "DELETE",
@@ -89,28 +88,33 @@ export default createStore({
         .then((data) => {
           swal({
             icon: "success",
-            title: `Item ${data.results.title} added`,
+            title: `Item added`,
+            buttons: "OK",
             closeOnClickOutside: false
           })
-          context.commit('setProducts', data.msg)
+          context.dispatch('getProducts')
+          // context.commit('setProducts', data.msg)
         })
     },
-    async addCart(context, payload) {
-      fetch('https://cyber-loox.herokuapp.com/users/' + context.state.user.user_id + '/cart', {
+    addCart(context, payload) {
+      let id = context.state.user.user_id
+      fetch('https://cyber-loox.herokuapp.com/users/' + id + '/cart', {
           method: 'POST',
           body: JSON.stringify(payload),
           headers: {
             'Content-type': 'application/json; charset=UTF-8',
           },
         })
-        .then((response) => response.json())
+        .then((response) => response.json())  
         .then((data) => {
           swal({
             icon: "success",
-            title: `Item ${data.results.title} added`,
+            title: `Item added`,
+            buttons: "OK",
             closeOnClickOutside: false
           })
-          context.commit('setCart', res.results)
+          context.dispatch('getCart', id)
+          console.log(id);
         })
     },
     async deleteCart(context, id) {
@@ -122,13 +126,14 @@ export default createStore({
           swal({
             icon: "success",
             title: `Items have been removed`,
+            buttons: "OK",
             closeOnClickOutside: false
           })
           context.dispatch('getCart', context.state.user.user_id)
         })
     },
     async deleteCartItem(context, id) {
-      fetch('https://cyber-loox.herokuapp.com/users/' + context.state.user.user_id + '/cart' + id, {
+      fetch('https://cyber-loox.herokuapp.com/users/' + context.state.user.user_id + '/cart/' + id, {
           method: 'DELETE'
         })
         .then((response) => response.json())
@@ -136,6 +141,7 @@ export default createStore({
           swal({
             icon: "success",
             title: `Items have been removed`,
+            buttons: "OK",
             closeOnClickOutside: false
           })
           context.dispatch('getCart', context.state.user.user_id)
@@ -169,10 +175,13 @@ export default createStore({
               swal({
                 icon: "success",
                 title: `Welcome Astronaut, ${data.msg[0].user_fullname}`,
+                buttons: "OK",
                 closeOnClickOutside: false
               })
+
               context.commit('setUser', data.msg[0]);
               context.dispatch('getCart', data.msg[0].user_id)
+              router.push('/products')
             }
           }
         })
@@ -207,7 +216,7 @@ export default createStore({
         })
     },
     async updateUser(context, payload) {
-      fetch('http://cyber-loox.herokuapp.com/users/' + context.state.user_id, {
+      fetch('http://cyber-loox.herokuapp.com/users/' + context.state.user.user_id, {
           method: "PUT",
           body: JSON.stringify(payload),
           headers: {
@@ -222,6 +231,8 @@ export default createStore({
             buttons: "OK"
           })
           context.commit('setUser', payload)
+          console.log(context.state.user.user_id);
+
         })
     },
     async deleteUser(context, id) {

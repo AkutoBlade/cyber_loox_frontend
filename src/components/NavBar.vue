@@ -19,11 +19,6 @@
               HOME</router-link
             >
           </li>
-        <li class="navs-links">
-            <router-link to="/products"
-              ><i class="fa-solid fa-mobile-screen"></i>ITEMS</router-link
-            >
-          </li>
           <li class="navs-links">
             <router-link to="/about"
               ><i class="fa-solid fa-circle-info"></i> ABOUT</router-link
@@ -42,6 +37,11 @@
           <li class="navs-links">
             <router-link to="/users/login"
               ><i class="fa-solid fa-user"></i>LOGIN</router-link
+            >
+          </li>
+        <li v-if="user" class="navs-links">
+            <router-link to="/products"
+              ><i class="fa-solid fa-mobile-screen"></i>ITEMS</router-link
             >
           </li>
           <li v-if="user" class="navs-links">
@@ -76,6 +76,7 @@
   box-sizing: border-box;
   font-family: "Dosis", sans-serif;
   color: #fff;
+  z-index: 50px;
 }
 body {
   background-color: #f2f2f2;

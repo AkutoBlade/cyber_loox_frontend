@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LandingView from '../views/LandingView.vue'
-import HomeView from '../views/HomeView.vue'
+import ProductView from '../views/ProductView.vue'
 import ContactView from '../views/ContactView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import LoginView from '../views/LoginView.vue'
 import AdminView from '../views/AdminView.vue'
 import SingleView from '../views/SingleView.vue'
 import CartView from '../views/CartView.vue'
+import UpdateView from '../views/UpdateView.vue'
 
 const routes = [
   {
@@ -17,7 +18,7 @@ const routes = [
   {
     path: '/products',
     name: 'products',
-    component: HomeView
+    component: ProductView
   },
   {
     path: '/about',
@@ -61,6 +62,12 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: CartView,
+    props: true
+  }, 
+  {
+    path: '/users/update',
+    name: 'update',
+    component: UpdateView,
     props: true
   }, 
   

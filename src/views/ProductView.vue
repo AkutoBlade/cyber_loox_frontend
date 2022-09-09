@@ -1,5 +1,5 @@
 <template>
-<h1 id="main_title">CYBER LOOX</h1>
+<h1 id="main_title" data-text="CYBER LOOX">CYBER LOOX</h1>
 <div v-if="products" class="container">
   <div class="card" v-for="product in products" :key="product.id">
 	<img :src="product.img" :alt="product.img" class="images" />
@@ -8,7 +8,6 @@
     <router-link :to="{name: 'single', params: {id: product.product_id}}">
       <button id="view" type="button" @click=""><i class="fa-solid fa-eye"></i> VIEW</button>
     </router-link>
-    <button id="cart" type="button" @click=""><i class="fa-solid fa-cart-plus"></i> CART</button>
 	</div>
    </div>
    <img class="image_icon" src="../assets/Mascot_1.png" alt="">
@@ -28,7 +27,8 @@
 
 export default {
  mounted(){
-  this.$store.dispatch('getProducts')
+  this.$store.dispatch('getProducts');
+  this.$store.commit('setProduct',null)
  },
  computed:{
    products(){
@@ -73,7 +73,7 @@ margin-top: 5%;
   text-transform: uppercase;
   box-shadow: 0px 0px 10px #3ec5ffdf ;
   top:45%;
-  left: 17%;
+  left: 34%;
   /* transition: transform 80ms ease-in; */
 }
 
@@ -94,9 +94,10 @@ margin-top: 5%;
 }
 
 #main_title{
- position: absolute;
+ position: relative;
  text-decoration: line-through;
- left: 36%;
+ left: 0%;
+ right: 1%;
  top:0%;
  font-size: 100px;
  /* transform: rotate(90deg); */
@@ -104,6 +105,28 @@ margin-top: 5%;
   font-family: 'Dosis', sans-serif;
   color: white;
 } 
+
+#main_title::before{
+position: absolute;
+content: attr(data-text);
+text-shadow: 0px 0px 20px white;
+filter: blur(25px) brightness(1);
+animation:  flicker 4s linear 1s infinite;
+}
+
+@keyframes flicker{
+  0%{filter:blur(5px) brightness(1);}
+  3%{filter:blur(5px) brightness(0);}
+  6%{filter:blur(5px) brightness(0);}
+  7%{filter:blur(5px) brightness(1);}
+  8%{filter:blur(5px) brightness(0);}
+  9%{filter:blur(5px) brightness(1);}
+  10%{filter:blur(5px) brightness(0);}
+  20%{filter:blur(5px) brightness(1);}
+  50%{filter:blur(5px) brightness(1);}
+  99%{filter:blur(5px) brightness(0);}
+  100%{filter:blur(5px) brightness(1);}
+}
 
 p{
  font-size: 15px;
@@ -125,10 +148,23 @@ p{
 .image_icon{
   position: absolute;
   bottom:84%;
-  left: 29.1%;
+  left: 30%;
   width:180px;
   z-index: 2;
+  animation: float 2.0s ease-in-out infinite;
 }
+
+@keyframes float{
+        0% {
+        transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+          }
 
 .intro{
   display: flex;
@@ -151,7 +187,7 @@ h1{
 .card{
 	width:350px;
 	height: 500px;
-	margin-top: 5%;
+	margin-top: -2%;
 	margin-bottom: 4%;
 	box-shadow: 5px 5px 20px #3ec5ffdf;
     border-radius: 30px;

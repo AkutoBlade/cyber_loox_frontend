@@ -1,4 +1,5 @@
 <template>
+ <main>
   <div class="container" id="container">
     <div class="form-container sign-in-container">
       <form onSubmit="{this.handleSubmitLogin}">
@@ -27,7 +28,7 @@
           <h1>Hello, fellow space cadet!</h1>
           <p>Enter your personal details and start journey with us</p>
           <router-link to="/users/update">
-          <button class="ghost" id="signUp">
+          <button v-if="user" class="ghost" id="signUp">
             Edit Profile
           </button>
           </router-link>
@@ -35,6 +36,7 @@
       </div>
     </div>
   </div>
+  </main>
 </template>
 <script>
 export default {
@@ -52,6 +54,11 @@ export default {
         }
     this.$store.dispatch("login",payload)
     }
+ },
+    computed:{
+   user(){
+    return this.$store.state.user
+   }
  }
 };
 </script>
@@ -59,6 +66,12 @@ export default {
 * {
   font-family: "Dosis", sans-serif;
 }
+
+main{
+  height: 90vh;
+  margin-bottom: -1%;
+}
+
 
 /* body {
   background: #f6f5f7;
@@ -88,8 +101,8 @@ p {
   margin: 20px 0 30px;
 }
 i {
-  position: absolute;
-  left: 1%;
+  position: relative;
+ left: 20%;
 }
 span {
   font-size: 12px;
@@ -161,8 +174,8 @@ input {
   height: 650px;
   max-width: 100%;
   min-height: 480px;
-  margin-bottom: 10%;
-  margin-top: 6.7%;
+  margin-bottom: 8%;
+  margin-top: 6%;
   margin-left: 27%;
   position: relative;
   left: 0%;
@@ -184,7 +197,7 @@ input {
 .container.right-panel-active .sign-up-container {
   /* transform: translateX(100%); */
   opacity: 1;
-  z-index: 5;
+  z-index: 0;
   animation: show 0.6s;
 }
 
@@ -196,7 +209,7 @@ input {
   height: 100%;
   overflow: hidden;
   transition: transform 0.6s ease-in-out;
-  z-index: 100;
+  z-index: 0;
   box-shadow: 0px 0vw 10px #3ec5ffdf;
 }
 
@@ -289,5 +302,90 @@ footer i {
 footer a {
   color: #3c97bf;
   text-decoration: none;
+}
+
+@media (max-width:425px) {
+
+  body{
+    overflow-x: hidden;
+  }
+  .container{
+    right:20%;
+    margin-left: 0%;
+    z-index: 0;
+    height: 900px;
+  }
+
+  .overlay{   
+  top: 50%;
+   height: 50%;
+  width: 200%;
+  right:100%;
+  }
+  .overlay-container{
+    left: 0%;
+    width: 100%;
+  }
+  
+  main{
+    height: 120vh;
+  }
+
+  .form-container {
+  position: absolute;
+  top: 5%;
+  height: 100%;
+  /* transition: all 0.6s ease-in-out; */
+}
+}
+
+@media (width:768px) {
+
+  body{
+    overflow-x: hidden;
+  }
+  .container{
+    right:20%;
+    margin-left: 0%;
+    z-index: 0;
+
+  }
+  
+  main{
+    height: 100vh;
+  }
+
+  .form-container {
+  position: absolute;
+  top: 15%;
+  left:-1%;
+  height: 100%;
+  /* transition: all 0.6s ease-in-out; */
+}
+}
+
+@media (width:1024px) {
+
+  body{
+    overflow-x: hidden;
+  }
+  .container{
+    right:10%;
+    margin-left: 10%;
+    z-index: 0;
+
+  }
+  
+  main{
+    height: 100vh;
+  }
+
+  .form-container {
+  position: absolute;
+  top: 15%;
+  left:-1%;
+  height: 100%;
+  /* transition: all 0.6s ease-in-out; */
+}
 }
 </style>
